@@ -2,18 +2,25 @@ height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
 n = len(height)
 left = 0
 right = n-1
-leftmax = height[left]
-rightmax = height[right]
+leftvalue = height[left]
+rightvalue = height[right]
+B = []
 res = 0
 while left < right:
-    if leftmax < rightmax:
+    if leftvalue < rightvalue:
         left += 1
-        leftmax= max(leftmax, height[left])
-        res += leftmax-height[left]
+        leftvalue = max(leftvalue, height[left])
+        water = leftvalue-height[left]
+        res += water
+        B.append(water)
+
     else:
         right -= 1
-        rightmax = max(rightmax, height[right])
-        res += rightmax - height[right]
+        rightvalue = max(rightvalue, height[right])
+        water = rightvalue - height[right]
+        res += water
+        B.append(water)
 
 print(res)
+print(B)
 
